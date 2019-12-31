@@ -31,3 +31,9 @@ describe '#Album' do
     end
   end
 end
+
+
+
+
+# [ 1, 2, 3 ].map { |e| e + 1 }      # preferred
+# [ 1, 2, 3 ].map do |e| e + 1 end   # acceptable

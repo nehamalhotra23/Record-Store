@@ -1,18 +1,26 @@
 require('sinatra')
 # require('sinatra/reloader')
-# require ("bundler/setup")
+require('./lib/album')
+require('pry')
 # also_reload('lib/**/*.rb')
 
-get ('/') do
-  "This will be our home page. '/' is always the root route in a Sinatra application."
+get('/test') do
+  @something = "this is a variable"
+  erb(:whatever)
 end
 
-get ('/albums') do
-  "This route will show a list of all albums."
+get('/') do
+  @albums = Album.all
+  erb(:albums)
+end
+
+get('/albums') do
+  @albums = Album.all
+  erb(:albums)
 end
 
 get ('/albums/new') do
-  "This will take us to a page with a form for adding a new album."
+  erb(:new_album)
 end
 
 get ('/albums/:id') do
@@ -20,5 +28,5 @@ get ('/albums/:id') do
 end
 
 post ('/albums') do
-  "This route will add an album to our list of albums. We can't access this by typing in the URL. In a future lesson, we will use a form that specifies a POST action to reach this route."
+   binding.pry
 end
