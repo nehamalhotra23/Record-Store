@@ -30,4 +30,12 @@ def update(name)
  self.name = name
  @@albums[self.id] = Album.new(self.name, self.id)
 end
+
+def delete
+  @@albums.delete(self.id)
+end
+
+def self.search(search_term)
+  @@albums.select{|key, value| value.name =~/#{search_term}/}.values
+end
 end
