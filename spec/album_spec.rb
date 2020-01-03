@@ -1,5 +1,7 @@
 require 'rspec'
 require 'album'
+require 'song'
+
 
 describe '#Album' do
   # before(:each) do
@@ -28,6 +30,17 @@ describe '#Album' do
       album = Album.new("Blue", nil)
       album2 = Album.new("Blue", nil)
       expect(album).to(eq(album2))
+    end
+  end
+  describe('#songs') do
+    it("returns an album's songs") do
+      album = Album.new("Giant Steps", nil)
+      album.save()
+      song = Song.new("Naima", album.id, nil)
+      song.save()
+      song2 = Song.new("Cousin Mary", album.id, nil)
+      song2.save()
+      expect(album.songs).to(eq([song, song2]))
     end
   end
 end

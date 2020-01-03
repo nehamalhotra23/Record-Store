@@ -38,4 +38,8 @@ end
 def self.search(search_term)
   @@albums.select{|key, value| value.name =~/#{search_term}/}.values
 end
+
+def songs
+   Song.find_by_album(self.id)
+ end
 end
